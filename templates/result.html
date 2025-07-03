@@ -3,13 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LinkShort - Your Shortened URL</title>
+    <link rel="stylesheet" href="../static/css/result.css">
 </head>
 <body>
-   <p>Shorten Url</p>
-    <hr>
-    <span>
-        <a href="{{result}}">{{ result }}</a>
-        </span>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">LinkShort</h1>
+            <p class="tagline">Your URL has been shortened successfully!</p>
+        </header>
+
+        <main>
+            <div class="result-card">
+                <div class="success-icon">✅</div>
+                
+                <div class="card-header">
+                    <h2 class="card-title">Your Shortened URL is Ready!</h2>
+                    <p class="card-description">Share this link anywhere you want. It's ready to use!</p>
+                </div>
+
+                <div class="url-result">
+                    <div class="url-label">Your shortened URL:</div>
+                    <div class="url-display">
+                        <a href="{{result}}" class="url-link" target="_blank">{{result}}</a>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="action-btn copy-btn" onclick="copyToClipboard()">
+                        📋 Copy Link
+                    </button>
+                    <a href="/" class="action-btn new-url-btn">
+                        🔗 Shorten Another
+                    </a>
+                    <button class="action-btn share-btn" onclick="shareUrl()">
+                        📤 Share
+                    </button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Clicks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Just Now</div>
+                        <div class="stat-label">Created</div>
+                    </div>
+                </div>
+
+                <div class="footer-actions">
+                    <p class="footer-text">Share your shortened URL on social media:</p>
+                    <div class="social-share">
+                        <a href="#" class="social-btn twitter-btn" onclick="shareOnTwitter()">
+                            🐦 Twitter
+                        </a>
+                        <a href="#" class="social-btn facebook-btn" onclick="shareOnFacebook()">
+                            📘 Facebook
+                        </a>
+                        <a href="#" class="social-btn linkedin-btn" onclick="shareOnLinkedIn()">
+                            💼 LinkedIn
+                        </a>
+                        <a href="#" class="social-btn whatsapp-btn" onclick="shareOnWhatsApp()">
+                            💬 WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="notification" id="notification">
+        Link copied to clipboard! 🎉
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const urlText = '{{result}}';
+            navigator.clipboard.writeText(urlText).then(function() {
+                showNotification();
+                const copyBtn = document.querySelector('.copy-btn');
+                copyBtn.textContent = '✅ Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = '📋 Copy Link';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function shareUrl() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out this shortened URL',
+                    url: '{{result}}'
+                });
+            } else {
+                copyToClipboard();
+            }
+        }
+
+        function shareOnTwitter() {
+            const url = encodeURIComponent('{{result}}');
+            const text = encodeURIComponent('Check out this shortened URL!');
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent('{{result}}');
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent('{{result}}');
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const url = encodeURIComponent('{{result}}');
+            const text = encodeURIComponent('Check out this shortened URL: ');
+            window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

@@ -3,24 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-    <link rel="stylesheet" href="../static/home.css">
+    <title>LinkShort - Modern URL Shortener</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+
 </head>
 <body>
-    <div class="header-top">
-        <h1>Url Shortner</h1>
-
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
-    <div class="input">
-        <form action="/" method="post">
-            <label for="url">Enter Url:</label>
-            <input type="text"  name="url" placeholder="" required>
 
-            <button type="submit">Submit</button>
+    <div class="container">
+        <header>
+            <h1 class="logo">LinkShort</h1>
+            <p class="tagline">Transform your long URLs into short, shareable links</p>
+            <p class="subtitle">Fast • Secure • Easy to use</p>
+        </header>
 
+        <main>
+            <div class="shortener-card">
+                <div class="card-header">
+                    <h2 class="card-title">Shorten Your URL</h2>
+                    <p class="card-description">Enter your long URL below and get a short, memorable link instantly</p>
+                </div>
 
-        </form>
+                <form class="url-form" action="/" method="post">
+                    <div class="input-group">
+                        <label class="input-label" for="url">Enter your URL:</label>
+                        <input 
+                            type="url" 
+                            id="url"
+                            name="url" 
+                            class="url-input"
+                            placeholder="https://example.com/very-long-url-that-needs-shortening"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        🔗 Shorten URL
+                    </button>
+                </form>
 
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-title">Lightning Fast</div>
+                        <div class="feature-description">Instant URL shortening</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-title">Secure</div>
+                        <div class="feature-description">Safe and reliable</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-title">Mobile Ready</div>
+                        <div class="feature-description">Works on all devices</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 LinkShort. Made with ❤️ for better web experience.</p>
+        </footer>
     </div>
 </body>
 </html>
