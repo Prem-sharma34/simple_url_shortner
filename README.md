@@ -1,6 +1,6 @@
 # LinkShort - URL Shortener
 
-A modern URL shortener built with Flask and SQLite featuring a sleek glass-morphism design.
+A modern open-source URL shortener built with Flask and SQLite featuring a sleek glass-morphism design.
 
 ## ✨ Features
 
